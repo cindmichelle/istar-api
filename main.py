@@ -2,7 +2,7 @@ import os
 from flask import Flask, flash, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = '/uploads'
+UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 
@@ -41,7 +41,7 @@ def upload_file():
       return redirect(url_for('uploaded_file',
                               filename=filename))
 
-@app.route('/uploads/<filename>')
+@app.route('/uploads/<filename>',  methods=['POST'])
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+                               filename, as_attachment=True)
