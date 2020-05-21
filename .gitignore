@@ -1,0 +1,8 @@
+# log file
+logs/
+
+# editor config
+vscode/
+
+# coco api
+mask_rcnn_coco.h5
