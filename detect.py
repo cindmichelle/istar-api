@@ -18,7 +18,7 @@ def detect_and_color_splash(model, image_path=''):
         # Color splash
         splash = color_splash(image, r['masks'])
         # Save output
-        file_name = "splash_{%S}".format(image_path)
+        file_name = "splash_{}".format(image_path)
         skimage.io.imsave(os.path.join(UPLOAD_FOLDER_OUTPUT,file_name), splash)
 
     print("Saved to ", file_name)

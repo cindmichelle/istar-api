@@ -10,6 +10,8 @@ class IstarConfig(Config):
     # Give the configuration a recognizable name
     NAME = "shapes"
 
+    BACKBONE="resnet50"
+
     GPU_COUNT = 1
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
