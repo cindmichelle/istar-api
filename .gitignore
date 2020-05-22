@@ -6,3 +6,10 @@ vscode/
 
 # coco api
 mask_rcnn_coco.h5
+*.h5
+
+
+#input / output file
+*.jpg
+*.jpeg
+*.png

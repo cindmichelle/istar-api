@@ -20,13 +20,14 @@ from matplotlib import patches,  lines
 from matplotlib.patches import Polygon
 import IPython.display
 
+
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../")
 
 # Import Mask RCNN
 sys.path.append(ROOT_DIR)  # To find local version of the library
 from mrcnn import utils
-
+from config import UPLOAD_FOLDER_OUTPUT
 
 ############################################################
 #  Visualization
@@ -81,7 +82,7 @@ def apply_mask(image, mask, color, alpha=0.5):
 
 
 def display_instances(image, boxes, masks, class_ids, class_names,
-                      scores=None, title="",
+                      scores=None, title="", filename="",
                       figsize=(16, 16), ax=None,
                       show_mask=True, show_bbox=True,
                       colors=None, captions=None):
@@ -163,8 +164,15 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             p = Polygon(verts, facecolor="none", edgecolor=color)
             ax.add_patch(p)
     ax.imshow(masked_image.astype(np.uint8))
-    if auto_show:
+
+    output_filename = 'output_{}'.format(filename)
+    output_filepath = os.path.join(UPLOAD_FOLDER_OUTPUT, output_filename)
+    plt.savefig(output_filepath)
+
+    if auto_show and not filename:
         plt.show()
+
+    return output_filename
 
 
 def display_differences(image,

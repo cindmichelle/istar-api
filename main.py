@@ -13,44 +13,13 @@ from config import UPLOAD_FOLDER_INPUT, UPLOAD_FOLDER_OUTPUT
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-
 ROOT_DIR = os.path.abspath("./")
 
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 
-# # Local path to trained weights file
-# COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
-
-# # Download COCO trained weights from Releases if needed
-# if not os.path.exists(COCO_MODEL_PATH):
-#     utils.download_trained_weights(COCO_MODEL_PATH)
-
-
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER_INPUT'] = UPLOAD_FOLDER_INPUT
 app.config['UPLOAD_FOLDER_OUTPUT'] = UPLOAD_FOLDER_OUTPUT
-
-# model = model.load
-
-# TODO :
-# - copy inference class dan train config class (karena inference class inherit dr config class) v
-# - model.py v
-# - config.py v
-# - utils.py v
-# - visualize.py v
-
-# - classify dr data static
-
-
-# # Training dataset
-# dataset_train = IstarDataset()
-# dataset_train.load_istar("./dataset_05_10/", "train")
-# dataset_train.prepare()
-
-# # Validation dataset
-# dataset_val = IstarDataset()
-# dataset_val.load_istar("./dataset_05_10/", "val")
-# dataset_val.prepare()
 
 inference_config = InferenceConfig()
 
