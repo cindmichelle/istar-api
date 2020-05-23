@@ -1,5 +1,6 @@
 import os
 from flask import Flask, flash, request, redirect, url_for, send_from_directory, jsonify
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
 import mrcnn.model as modellib
@@ -18,6 +19,7 @@ ROOT_DIR = os.path.abspath("./")
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 
 app = Flask(__name__)
+CORS(app)
 app.config['UPLOAD_FOLDER_INPUT'] = UPLOAD_FOLDER_INPUT
 app.config['UPLOAD_FOLDER_OUTPUT'] = UPLOAD_FOLDER_OUTPUT
 
@@ -68,10 +70,6 @@ def upload_file():
             input_filename = secure_filename(file.filename)
             file.save(os.path.join(
                 app.config['UPLOAD_FOLDER_INPUT'], input_filename))
-
-            # call clasify from model
-            # save clasify result to folder outputs
-            # return outputs path to url
 
             output_filename = detect_and_color_splash(model, image_path=input_filename)
 
